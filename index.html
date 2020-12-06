@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+  	<script>
+  	<!-- //
+  		function exec(){
+      var Xc = document.form1.Xc.value
+      var Yc = document.form1.Xc.value
+      var Xo = document.form1.Xo.value
+      var Yo = document.form1.Yo.value
+      var R = document.form1.R.value
+      Xc= parseInt(Xc)
+      Yc= parseInt(Yc)
+      Xo= parseInt(Xo)
+      Yo= parseInt(Yo)
+      R = parseInt(R)
+
+      if      ((Xo-Xc)*(Xo-Xc)+(Yo-Yc)*(Yo-Yc)<R*R)   //если точка лежит внутри окружности, то вывести сообщение об отсутствии касательных.
+    {
+        document.write("Точка лежит внутри окружности. Касательных не существует. ")
+    }
+    else if ((Xo-Xc)*(Xo-Xc)+(Yo-Yc)*(Yo-Yc)==R*R)  //если точка принадлежит окружности, то вывести сказать об этом и закончить работу программы.
+    {
+        document.write("Точка лежит на окружности.")
+        return 0;
+    }
+    else if (Math.abs(Xo-Xc)==R)                         //если координата Xo=Xc-R или Xo=Xc+R, то касательная параллельна (O;Y) и проходит через точку (Xo;Yc)
+    {
+        document.write("Касательная параллельна (O;Y) и проходит через точку (", Xo + ";" + Yc+")");
+        return 0;
+    }
+    else if (Math.abs(Yo-Yc)==R)                         //если координата Yo=Yc-R или Yo=Yc+R, то касательная параллельна (O;X) и проходит через точку (Xc;Yo)
+    {
+        document.write("координата Yo=Yc-R или Yo=Yc+R, то касательная параллельна (O;X) и проходит через точку (Xc;Yo)");
+        return 0;
+    }
+    else if ((Xo-Xc)*(Xo-Xc)+(Yo-Yc)*(Yo-Yc)>R*R)   //если точка лежит вне окружности, то найти точку касания касательной с окружностью.
+    {                                       
+        var A=2*Xc*Xo-Xc*Xc+R*R-Xo*Xo;
+        var B=Xc*Yc-Xc*Yo+Yo*Xo-Xo*Yc;
+        var C=R*R-Yc*Yc-Yo*Yo+2*Yc*Yo;
+ 
+        var k1=(-B+Math.sqrt(B*B-A*C))/A;
+        var k2=-(-B+Math.sqrt(B*B-A*C))/A;
+ 
+        var Xk1=(Xc+k1*(Yc+k1*Xo-Yo))/(k1*k1+1);
+        var Yk1=k1*(Xk1-Xo)+Yo;
+        document.write("Результат точка с координатами: ",Xk1.toFixed(2)," ", Yk1.toFixed(2))
+ 
+    }
+    
+  	}
+  	//-->
+  	</script>
+  	
+  </head>
+  <body>
+  	<FORM name = "form1">
+  		Координата х центра окружности: <input type="text" name="Xc"><hr>
+  		Координата у центра окружности: <input type="text" name="Yc"><hr>
+  		Радиус окружности: <input type="text" name="R"><hr>
+  		Координата х точки: <input type="text" name="Xo"><hr>
+  		Координата у точки: <input type="text" name="Yo"><hr>
+  		<input type="button" value=Вычислить name="but1" 
+  		onclick="exec()">
+  	</FORM>
+  </body>
+</html>
